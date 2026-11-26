@@ -1499,16 +1499,29 @@ function openCal(field, input){
   if (calOwner && calOwner.input === input) return;
   calOwner = { field, input };
 
+  const isFrom  = input === dateFromEl;
   const current = parseFieldValue(input.value);
-  /* пустое поле — открываем на дате самого свежего сообщения */
-  const fallback = MESSAGES.reduce((max, m) => Math.max(max, m.base || 0), 0) || Date.now();
-  const d = new Date(current != null ? current : fallback);
 
+  /* пустое поле — открываем на дате соседнего поля или самого свежего сообщения */
+  let fallbackTs = null;
+  if (current == null){
+    const other = parseFieldValue((isFrom ? dateToEl : dateFromEl).value);
+    const newest = MESSAGES.reduce((max, m) => Math.max(max, m.base || 0), 0);
+    fallbackTs = other != null ? other : (newest || Date.now());
+  }
+
+  const d = new Date(current != null ? current : fallbackTs);
   calPicked = { y: d.getFullYear(), m: d.getMonth(), d: d.getDate() };
   calView   = { y: d.getFullYear(), m: d.getMonth() };
 
-  calHourEl.value = d.getHours();
-  calMinEl.value  = d.getMinutes();
+  /* по умолчанию фильтруем весь день, а не время случайного сообщения */
+  if (current == null){
+    calHourEl.value = isFrom ? 0 : 23;
+    calMinEl.value  = isFrom ? 0 : 59;
+  } else {
+    calHourEl.value = d.getHours();
+    calMinEl.value  = d.getMinutes();
+  }
 
   renderCal();
 
