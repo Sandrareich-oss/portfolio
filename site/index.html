@@ -237,6 +237,20 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--orange);outline-off
 .band{background:var(--dark);padding:clamp(18px,4vw,48px);margin:0 0 72px}
 .band .ph,.band .pair,.case-view .band .ph.wide{margin:0}
 .band .ph{background:linear-gradient(145deg,#3A3A37,#2A2A28)}
+/* ---------- встроенный кликабельный прототип (кейс 1) ---------- */
+.block.proto-block{display:block}
+.block.proto-block>*{max-width:none}
+.block.proto-block>h2{margin-bottom:20px}
+.proto-frame{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
+.proto-bar{display:flex;align-items:center;gap:12px;padding:10px 14px;border-bottom:1px solid var(--line);background:var(--card)}
+.proto-dots{display:flex;gap:6px}
+.proto-dots i{width:9px;height:9px;border-radius:50%;background:var(--muted);opacity:.45}
+.proto-url{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.proto-open{margin-left:auto;font-family:var(--mono);font-size:12px;color:var(--orange);text-decoration:none}
+.proto-open:hover{text-decoration:underline}
+.proto-frame iframe{display:block;width:100%;height:720px;border:0;background:#fff}
+.proto-hint{margin:14px 0 0;font-size:12px;color:var(--muted)}
+@media (max-width:600px){.proto-frame iframe{height:620px}.proto-url{display:none}}
 /* ---------- card fan: overlapping screenshots that spread apart on hover ---------- */
 .band.fan-band{padding:clamp(30px,4.4vw,58px) 0;container-type:inline-size;overflow:hidden;background:transparent}
 /* вывод перед веером карточек — отступ 20px до карточек */
@@ -471,7 +485,7 @@ body{-webkit-tap-highlight-color:transparent}
     </div>
 
     <section class="panel" id="p-projects" role="tabpanel" aria-labelledby="t-projects">
-      <a class="proj" href="#project-1"><div class="no">01/</div><div class="ph wip v1" role="img" aria-label="Обложка проекта 1: мониторинг документов, изображение готовится"><div class="scr"></div><div class="tag">В процессе</div></div><h2>Мониторинг документов — от&nbsp;хаоса к&nbsp;прозрачности</h2><p>редизайн модуля мониторинга отправлений в&nbsp;экосистеме документооборота</p></a>
+      <a class="proj" href="#project-1"><div class="no">01/</div><div class="ph wip v1" role="img" aria-label="Обложка проекта 1: мониторинг документов, кликабельный прототип"><div class="scr"></div><div class="tag">Кликабельный прототип</div></div><h2>Мониторинг документов — от&nbsp;хаоса к&nbsp;прозрачности</h2><p>редизайн модуля мониторинга отправлений в&nbsp;экосистеме документооборота</p></a>
       <a class="proj" href="#project-2"><div class="no">02/</div><div class="ph cover" role="img" aria-label="Обложка проекта: FBD-редактор математических формул на экране монитора"></div><h2>FBD-редактор математических формул в системе SCADA</h2><p>на 40% сократили время настройки стенда</p></a>
       <a class="proj" href="#project-3"><div class="no">03/</div><div class="ph wip v3" role="img" aria-label="Обложка проекта 3: в процессе"><div class="scr"></div><div class="tag">В процессе</div></div><h2>Название проекта 3</h2><p>Одна строка о продукте и роли</p></a>
     </section>
@@ -508,6 +522,19 @@ body{-webkit-tap-highlight-color:transparent}
     <div class="tags"><span>2026</span><span>B2B</span><span>Web</span><span>Monitoring</span></div>
   </header>
   <div class="band"><div class="ph wide wip v1" role="img" aria-label="Обложка проекта 1: мониторинг документов, изображение готовится"><div class="scr"></div><div class="tag">В процессе</div></div></div>
+
+  <div class="block proto-block"><h2 class="about-h">Кликабельный прототип</h2>
+    <p>Прототип модуля «Монитор» можно потрогать прямо здесь: откройте любую строку таблицы, чтобы увидеть путь отправления, попробуйте фильтры по&nbsp;дате и&nbsp;времени, статусу и&nbsp;направлению. Прогресс передачи обновляется плавно, как в&nbsp;реальном интерфейсе.</p>
+    <div class="proto-frame">
+      <div class="proto-bar">
+        <span class="proto-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="proto-url">monitor-demo.html</span>
+        <a class="proto-open" href="monitor-demo.html" target="_blank" rel="noopener">Открыть на&nbsp;весь экран ↗</a>
+      </div>
+      <iframe src="monitor-demo.html" title="Интерактивный прототип модуля «Монитор»" loading="lazy"></iframe>
+    </div>
+    <p class="proto-hint">Подсказка: нажмите на&nbsp;строку «Передача 30%» — откроется панель с&nbsp;таймлайном и&nbsp;прогрессом.</p>
+  </div>
 
   <div class="block"><h2 class="about-h">О&nbsp;проекте</h2>
     <dl class="rows">
