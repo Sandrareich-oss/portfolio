@@ -37,6 +37,8 @@ body{
 }
 button{ font-family:inherit; }
 :focus-visible{ outline:2px solid #8fb2f7; outline-offset:2px; }
+/* версия, встроенная в кейс: чуть меньше, чтобы текст в колонках таблицы помещался */
+body.in-frame{ zoom:.75; }
 
 /* ───────────── top bar ───────────── */
 .topbar{
@@ -831,6 +833,9 @@ tbody td.empty{
 <script>
 'use strict';
 
+/* в кейсе прототип встроен в iframe — уменьшаем всё содержимое без влияния на полноэкранную версию */
+if (window.self !== window.top) document.body.classList.add('in-frame');
+
 /* ══════════════ данные ══════════════ */
 const STEPS = [
   { key:'start',     label:'Старт отправки' },
@@ -1473,9 +1478,11 @@ function renderCal(){
 }
 
 function positionCal(anchor){
-  const r = anchor.getBoundingClientRect();
-  const w = calPopEl.offsetWidth;
-  const h = calPopEl.offsetHeight;
+  const rawZoom = getComputedStyle(document.body).zoom;
+  const z = rawZoom.endsWith('%') ? parseFloat(rawZoom) / 100 : (parseFloat(rawZoom) || 1);
+  const r = anchor.getBoundingClientRect();          /* координаты в экранных пикселях */
+  const w = calPopEl.offsetWidth * z;
+  const h = calPopEl.offsetHeight * z;
 
   let left = r.left;
   if (left + w > window.innerWidth - 12) left = Math.max(12, window.innerWidth - w - 12);
@@ -1483,8 +1490,9 @@ function positionCal(anchor){
   let top = r.bottom + 8;
   if (top + h > window.innerHeight - 12) top = Math.max(12, r.top - h - 8);
 
-  calPopEl.style.left = left + 'px';
-  calPopEl.style.top  = top + 'px';
+  /* стили задаются в CSS-пикселях до масштабирования */
+  calPopEl.style.left = (left / z) + 'px';
+  calPopEl.style.top  = (top / z) + 'px';
 }
 
 function openCal(field, input){
