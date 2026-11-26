@@ -294,6 +294,8 @@ tbody td{
 }
 thead th:last-child, tbody td:last-child{ border-right:0; }
 tbody tr:last-child td{ border-bottom:0; }
+tbody td.status-cell{ overflow:visible; text-overflow:clip; }
+.status-cell .pill{ white-space:nowrap; }
 tbody tr{
   cursor:pointer;
   outline:none;
@@ -729,13 +731,13 @@ tbody td.empty{
     <div class="tscroll">
       <table>
         <colgroup>
-          <col style="width:12.5%">
-          <col style="width:7%">
-          <col style="width:9.5%">
-          <col style="width:18%">
-          <col style="width:19%">
-          <col style="width:16%">
-          <col style="width:9.5%">
+          <col style="width:11%">
+          <col style="width:6.5%">
+          <col style="width:9%">
+          <col style="width:17%">
+          <col style="width:25%">
+          <col style="width:14%">
+          <col style="width:9%">
           <col style="width:8.5%">
         </colgroup>
         <thead>
