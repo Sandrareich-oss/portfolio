@@ -50,7 +50,7 @@ button{ font-family:inherit; }
   z-index:30;
 }
 .brand{ display:flex; align-items:center; gap:10px; text-decoration:none; }
-.brand svg{ width:52px; height:36px; display:block; }
+.brand img{ width:52px; height:auto; display:block; }
 .nav{
   position:absolute; left:50%; transform:translateX(-50%);
   display:flex; align-items:center; gap:34px;
@@ -74,7 +74,7 @@ button{ font-family:inherit; }
   background:#dfe6f2; overflow:hidden; flex:none;
   box-shadow:0 0 0 1px rgba(27,36,48,.08);
 }
-.avatar svg{ width:100%; height:100%; display:block; }
+.avatar img{ width:100%; height:100%; object-fit:cover; display:block; }
 .user-name{ font-size:14.5px; color:#232c39; }
 .logout{
   border:0; background:transparent; color:#3a4553; cursor:pointer;
@@ -620,16 +620,7 @@ tbody td.empty{
 
 <header class="topbar">
   <a class="brand" href="#" aria-label="На главную">
-    <svg viewBox="0 0 40 28" aria-hidden="true">
-      <defs>
-        <linearGradient id="brandA" x1="0" y1="0" x2="1" y2=".6">
-          <stop offset="0" stop-color="#5b91ff"/>
-          <stop offset=".55" stop-color="#2f6df6"/>
-          <stop offset="1" stop-color="#1746c9"/>
-        </linearGradient>
-      </defs>
-      <path d="M1 27V1h8.6L20 16.2 30.4 1H39v26h-8.2V13.6L22.6 27h-5.2L9.2 13.6V27z" fill="url(#brandA)"/>
-    </svg>
+    <img src="demo-assets/logo.svg" alt="">
   </a>
 
   <nav class="nav" aria-label="Основная навигация">
@@ -640,23 +631,8 @@ tbody td.empty{
   </nav>
 
   <div class="user">
-    <span class="avatar" aria-hidden="true">
-      <svg viewBox="0 0 40 40" role="img">
-        <defs>
-          <clipPath id="avClip"><circle cx="20" cy="20" r="20"/></clipPath>
-        </defs>
-        <g clip-path="url(#avClip)">
-          <rect width="40" height="40" fill="#cfd9e8"/>
-          <path d="M20 27c-7.2 0-13 4.9-13 11.2V40h26v-1.8C33 31.9 27.2 27 20 27Z" fill="#33445c"/>
-          <path d="M20 27c-2.4 0-4.7.5-6.6 1.4L20 35.4l6.6-7A16 16 0 0 0 20 27Z" fill="#f3f6fa"/>
-          <ellipse cx="20" cy="16.4" rx="6.9" ry="7.9" fill="#e6bd97"/>
-          <path d="M13.1 16.2c-.3-4.6 2.7-8.6 6.9-8.6s7.2 4 6.9 8.6c-.5-2.6-1.7-4.1-3.3-4.7-1 .6-2.3.9-3.6.9s-2.6-.3-3.6-.9c-1.6.6-2.8 2.1-3.3 4.7Z" fill="#2b2118"/>
-          <path d="M13.6 12.6c.6-3.6 3.3-6 6.4-6 3.2 0 5.9 2.4 6.4 6-1.2-2-3.3-3.3-6.4-3.3s-5.2 1.3-6.4 3.3Z" fill="#3a2d21"/>
-          <circle cx="17.3" cy="16.6" r=".9" fill="#3a2d21"/>
-          <circle cx="22.7" cy="16.6" r=".9" fill="#3a2d21"/>
-          <path d="M18.2 20.1c1.1.8 2.5.8 3.6 0" stroke="#c08f6d" stroke-width=".9" fill="none" stroke-linecap="round"/>
-        </g>
-      </svg>
+    <span class="avatar">
+      <img src="demo-assets/avatar.png" alt="">
     </span>
     <span class="user-name">Сергей Н.</span>
     <button class="logout" type="button" title="Выйти" aria-label="Выйти">
