@@ -9,13 +9,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Oswald:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#EFEBE1; --ink:#1B1B1A; --muted:#6E6B63; --line:#1B1B1A; --orange:#E8591C; --dark:#1B1B1A; --ondark:#EFEBE1; --dmuted:#8C887E; --onink:#EFEBE1; --card:#E4DFD3; 
+  --bg:#EFEBE1; --ink:#1B1B1A; --muted:#6E6B63; --line:#1B1B1A; --orange:#E8591C; --dark:#1B1B1A; --ondark:#EFEBE1; --dmuted:#8C887E; --onink:#EFEBE1; --card:#E4DFD3; --soft-text:#928E85; 
   --display:"Oswald","Arial Narrow",Impact,sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
   box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#161615;--ink:#EFEBE1;--muted:#8C887E;--line:#EFEBE1;--dark:#222221;--onink:#161615;--card:#222221}}
-:root[data-theme="dark"]{--bg:#161615;--ink:#EFEBE1;--muted:#8C887E;--line:#EFEBE1;--dark:#222221;--onink:#161615;--card:#222221}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#161615;--ink:#EFEBE1;--muted:#8C887E;--line:#EFEBE1;--dark:#222221;--onink:#161615;--card:#222221;--soft-text:#BCB7AC}}
+:root[data-theme="dark"]{--bg:#161615;--ink:#EFEBE1;--muted:#8C887E;--line:#EFEBE1;--dark:#222221;--onink:#161615;--card:#222221;--soft-text:#BCB7AC}
 *{box-sizing:border-box}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--mono);font-size:14px;line-height:1.65;-webkit-font-smoothing:antialiased}
@@ -208,9 +208,9 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--orange);outline-off
 .view.is-in{opacity:1}
 .view[hidden]{display:none!important}
 @media (prefers-reduced-motion:reduce){.view{transition:none}}
-.case-view{max-width:1180px;margin:0 auto;padding:36px var(--case-pad-x,40px) 100px}
+.case-view{max-width:1180px;margin:0 auto;padding:36px var(--case-pad-x,40px) 100px;font-size:15px}
 .case-bar{position:sticky;top:0;z-index:6;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:12px var(--case-pad-x,40px) 16px;margin:0 calc(-1 * var(--case-pad-x,40px)) 6px;background:linear-gradient(var(--bg) 76%,transparent)}
-.case-head{margin:48px 0 28px}
+.case-head{margin:48px 0 48px}
 .case-head .no{color:var(--orange);font-weight:500;margin-bottom:10px}
 .case-head h1{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:clamp(2rem,5vw,3.8rem);line-height:1.1;margin:0;outline:none}
 .case-sub{color:var(--muted);margin:14px 0 0;text-transform:uppercase;font-size:.85rem;letter-spacing:.04em}
@@ -254,6 +254,11 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--orange);outline-off
 .proto-open:hover{text-decoration:underline}
 .proto-frame iframe{display:block;width:100%;height:720px;border:0;background:#fff}
 .proto-hint{margin:14px 0 0;font-size:12px;color:var(--muted)}
+.block p.text-soft{color:var(--soft-text)}
+.block.proto-block>p{margin:0 0 20px;color:var(--soft-text)}
+.block .outro-highlight{background:var(--orange);padding:18px 20px;margin:0 0 20px}
+.outro-highlight .step{margin:0 0 8px;color:#1B1B1A}
+.block .outro-highlight p.tone-ink{color:#1B1B1A;margin:0}
 @media (max-width:600px){.proto-frame iframe{height:620px}.proto-url{display:none}}
 /* ---------- card fan: overlapping screenshots that spread apart on hover ---------- */
 .band.fan-band{padding:clamp(30px,4.4vw,58px) 0;container-type:inline-size;overflow:hidden;background:transparent}
@@ -526,7 +531,7 @@ body{-webkit-tap-highlight-color:transparent}
     <div class="tags"><span>2026</span><span>B2B</span><span>Web</span><span>Monitoring</span></div>
   </header>
   <div class="block proto-block"><h2 class="about-h">Кликабельный прототип</h2>
-    <p>Прототип модуля «Монитор» можно потрогать прямо здесь: откройте любую строку таблицы, чтобы увидеть путь отправления, попробуйте фильтры по&nbsp;дате и&nbsp;времени, статусу и&nbsp;направлению. Прогресс передачи обновляется плавно, как в&nbsp;реальном интерфейсе.</p>
+    <p>Прототип модуля «Монитор» можно потрогать прямо здесь: откройте любую строку таблицы, чтобы увидеть путь отправления, попробуйте фильтры по&nbsp;дате и&nbsp;времени, статусу и&nbsp;направлению.</p>
     <div class="proto-frame">
       <div class="proto-bar">
         <span class="proto-dots" aria-hidden="true"><i></i><i></i><i></i></span>
@@ -549,7 +554,7 @@ body{-webkit-tap-highlight-color:transparent}
 
   <div class="block"><h2 class="about-h">Контекст и&nbsp;проблема</h2>
     <h3 class="step">Контекст экосистемы</h3>
-    <p>Мы работали в&nbsp;жёстких рамках, заданных устройством всей экосистемы.</p>
+    <p class="text-soft">Мы работали в&nbsp;жёстких рамках, заданных устройством всей экосистемы.</p>
     <ul class="list text">
       <li><span class="n">01</span><span><b>Единый брендбук.</b><br>Параллельная команда делала новый модуль по&nbsp;ранее разработанному брендбуку. Наша задача была не&nbsp;просто улучшить UX, но&nbsp;и&nbsp;привести интерфейс к&nbsp;общему стилю экосистемы.</span></li>
       <li><span class="n">02</span><span><b>Гибкость рамок.</b><br>Брендбук создавался давно, поэтому нам разрешили вносить изменения для&nbsp;улучшения читаемости и&nbsp;удобства&nbsp;— но&nbsp;только после согласования с&nbsp;руководством и&nbsp;командой «Документооборота».</span></li>
@@ -565,14 +570,16 @@ body{-webkit-tap-highlight-color:transparent}
   </div>
 
   <div class="block"><h2 class="about-h">Анализ конкурентов</h2>
-    <p class="tone-ink">Мы изучили, как решают задачу мониторинга документов в&nbsp;аналогичных системах: «Дело», «1С:Документооборот», DocuWare, СБИС.</p>
+    <p class="tone-ink">Я изучила, как решают задачу мониторинга документов в&nbsp;аналогичных системах: «Дело», «1С:Документооборот», DocuWare, СБИС.</p>
     <h3 class="step">Как&nbsp;решает рынок</h3>
     <ul class="list text">
       <li><span class="n">01</span><span><b>Классические системы:</b> перегруженные таблицы или слишком абстрактные дашборды. Нет прозрачности для&nbsp;пользователя в&nbsp;перемещении документа.</span></li>
       <li><span class="n">02</span><span><b>Современные SaaS:</b> паттерн Timeline&nbsp;— визуальная хронология с&nbsp;этапами, как в&nbsp;сервисах трекинга посылок. Интуитивно понятно любому человеку.</span></li>
     </ul>
-    <h3 class="step">Вывод</h3>
-    <p class="tone-ink">Классические системы перегружены, современные дашборды&nbsp;— слишком абстрактны. Прозрачного для&nbsp;пользователя пути документа нет ни&nbsp;там, ни&nbsp;там.</p>
+    <div class="outro-highlight">
+      <h3 class="step">Вывод</h3>
+      <p class="tone-ink">Классические системы перегружены, современные дашборды&nbsp;— слишком абстрактны. Прозрачного для&nbsp;пользователя пути документа нет ни&nbsp;там, ни&nbsp;там.</p>
+    </div>
   </div>
 
   <div class="statement">
