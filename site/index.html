@@ -944,9 +944,7 @@ body{-webkit-tap-highlight-color:transparent}
   function closeViewer(){ viewer.hidden=true; link.focus(); }
   link.addEventListener('click',function(e){
     e.preventDefault();
-    var w=null;
-    if(url){ try{ w=window.open(url,'_blank'); if(w) w.opener=null; }catch(err){ w=null; } }
-    if(!w) openViewer();
+    openViewer();
   });
   if(downloadBtn) downloadBtn.addEventListener('click',downloadPdf);
   document.getElementById('cv-close').addEventListener('click',closeViewer);
