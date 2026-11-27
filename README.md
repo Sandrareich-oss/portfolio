@@ -44,5 +44,8 @@ python -m http.server 4173 --directory site
 
 ## Деплой
 
-Достаточно залить содержимое `site/` (файлы `index.html`, `monitor-demo.html` и папки `assets/`, `demo-assets/`) на любой статический хостинг:
-GitHub Pages, Netlify, Vercel, Cloudflare Pages — без настроек сборки.
+Сайт опубликован на GitHub Pages: https://sandrareich-oss.github.io/portfolio/
+
+Деплой автоматический: при каждом push в `main` workflow `.github/workflows/deploy.yml` берёт содержимое папки `site/` (файлы `index.html`, `monitor-demo.html` и папки `assets/`, `demo-assets/`) и публикует его на Pages. Сборка не нужна — можно запустить и вручную через `workflow_dispatch` во вкладке Actions.
+
+Для другого статического хостинга (Netlify, Vercel, Cloudflare Pages) достаточно указать `site/` как корень публикации — без настроек сборки.
